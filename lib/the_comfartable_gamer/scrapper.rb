@@ -1,6 +1,9 @@
+require "nokogiri"
+require "open-uri"
+
 
 def create article
-    html = File.read('https://gameranx.com/updates/')
+    html = File.read('https://www.pcgamer.com/news/')
     article = Nokogiri::HTML(html)
 
     article.css("#content").each do |post|
@@ -10,7 +13,7 @@ def create article
         # link = article.css("")
         post = article.css("article")
         link = article.css(".article-link")
-
+    end
 
 
 
