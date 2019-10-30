@@ -1,0 +1,2 @@
+class NewsForGamers::Cli
+end
