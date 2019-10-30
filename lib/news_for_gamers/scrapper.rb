@@ -19,7 +19,7 @@ class NewsForGamers::Scrapper
                 author = pcgamer[2]
                 description = pcgamer[4]
                 tag = pcgamer[3]
-                binding.pry
+                #binding.pry
             end
 
         
