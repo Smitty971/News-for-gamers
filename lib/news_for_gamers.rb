@@ -1,6 +1,6 @@
-require "the_comfartable_gamer/version"
+require "news_for_gamers/version"
 
-module TheComfartableGamer
+module NewsForGamers
   class Error < StandardError; end
   # Your code goes here...
 end
