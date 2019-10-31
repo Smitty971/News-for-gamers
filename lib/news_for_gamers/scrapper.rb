@@ -1,10 +1,13 @@
 require "nokogiri"
 require "open-uri"
 require "pry"
-# module NewsForGamers
+module NewsForGamers
     
-# end
+end
 class NewsForGamers::Scrapper
+        def initialize(link)
+            @link = link
+        end
 
         def self.create_article
         html = open('https://www.pcgamer.com/news/')
@@ -20,20 +23,20 @@ class NewsForGamers::Scrapper
                 author = pcgamer[2]
                 description = pcgamer[4]
                 tag = pcgamer[3]
+                #binding.pry
             end
-
-        
-
         end
-        create_article
+        #testing output
+        #create_article
 
 
-
-
-    # def create_news(link)
-    #     link.each do |text|
-    #     #post = link.css("p") 
-    #     end
-    # end
-    #content > section > div > div.listingResult.small.result2
+        def self.create_post(link=nil)
+            html = open('https://www.pcgamer.com/black-future-88-release-date/')
+            link = Nokogiri::HTML(html)
+            link.css("a").first.attr("href").each do |content|
+                desc = content.css("#article-body")
+                binding.pry
+            end
+        end
+        create_post()
 end

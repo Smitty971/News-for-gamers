@@ -2,7 +2,7 @@ class NewsForGamers::Article
 
         @@all = []
 
-        attr_accessor :title, :tag, :author, :description
+        attr_accessor :title, :tag, :author, :description, :scrapper
 
         def initialize(title, tag, author, description)
             @title = title
@@ -18,5 +18,5 @@ class NewsForGamers::Article
         def self.reset_all
             @@all.clear
         end
-    end
+
 end 
