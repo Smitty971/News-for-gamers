@@ -1,9 +1,9 @@
 require "nokogiri"
 require "open-uri"
 require "pry"
-module NewsForGamers
+# module NewsForGamers
     
-end
+# end
 class NewsForGamers::Scrapper
 
         def self.create_article
@@ -17,7 +17,6 @@ class NewsForGamers::Scrapper
                 puts post.text.strip.split(/\n+/)
                 puts link
                 title = pcgamer[0]
-                #date = pcgamer[]
                 author = pcgamer[2]
                 description = pcgamer[4]
                 tag = pcgamer[3]
