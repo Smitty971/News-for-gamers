@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+#require "news_for_gamers"
+require './lib/environment'
+NewsForGamers::Cli.new.call

@@ -1,18 +1,13 @@
-require "pry"
-module NewsForGamers
-    
-
 
     class NewsForGamers::Cli
     #cli class tells the scrapper to scrape, scrape articles, make articles with scraped data
-        attr_accessor :article, :scrapper
+        attr_accessor :article, :scraper
 
         def initialize(title, tag, author, description)
             @title = title
             @tag = tag
             @author = author
             @description = description
-            binding.pry
         end
 
         # def news
@@ -33,11 +28,11 @@ module NewsForGamers
         
 
         def call
-            NewsForGamers::Scrapper.create_article
+            NewsForGamers::Scraper.create_article
             puts "-------------------------------------------------------------------------------".black
             puts "--Welcome to News for Gamers. Your one stop shop for the latest gaming news!!--".red
             puts "-------------------------------------------------------------------------------".black
-            #create_article
+            NewsForGamers::Scraper.create_post
             start
         end
 
@@ -48,12 +43,11 @@ module NewsForGamers
             news
         end
 
-    #     user_input = number_to_index(gets.chomp)
-    #     if !user_input.between?(0, menu.size-1)
-    #         puts "Error input not valid. Try again.".red
-    #     elsif
-    #         selection(user_input)
-    #         puts 
-    #     end
+        user_input = number_to_index(gets.chomp)
+        if !user_input.between?(0, menu.size-1)
+            puts "Error input not valid. Try again.".red
+        elsif
+            selection(user_input)
+            puts 
+        end
      end
-end

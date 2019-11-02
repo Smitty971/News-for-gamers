@@ -1,13 +1,9 @@
-require "pry"
-module NewsForGamers
-    
-end
 
 class NewsForGamers::Article
 
         @@all = []
 
-        attr_accessor :title, :tag, :author, :description, :scrapper, :attributes
+        attr_accessor :title, :tag, :author, :description, :scraper, :attributes
 
         def initialize(attributes)
             #trying to pull title data from the hash into an instance variable.
