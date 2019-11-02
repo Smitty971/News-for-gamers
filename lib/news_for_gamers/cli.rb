@@ -1,53 +1,59 @@
 
-    class NewsForGamers::Cli
+    class Cli
     #cli class tells the scrapper to scrape, scrape articles, make articles with scraped data
-        attr_accessor :article, :scraper
+        attr_accessor :article, :scraper, :attributes
 
-        def initialize(title, tag, author, description)
-            @title = title
-            @tag = tag
-            @author = author
-            @description = description
-        end
+        # def initialize(title, tag, author, description)
+        #     @title = title
+        #     @tag = tag
+        #     @author = author
+        #     @description = description
+        # end
 
-        # def news
+        
         # menu = [
-        # 1. Article.new(title, tag, author, description),
-        # 2. Article.new(title, tag, author, description),
-        # 3. Article.new(title, tag, author, description),
-        # 4. Article.new(title, tag, author, description),
-        # 5. Article.new(title, tag, author, description),
-        # 6. Article.new(title, tag, author, description),
-        # 7. Article.new(title, tag, author, description),
-        # 8. Article.new(title, tag, author, description),
-        # 9. Article.new(title, tag, author, description),
-        # 10. Article.new(title, tag, author, description)
+        # Article.new(),
+        # Article.new(),
+        # Article.new(),
+        # Article.new(),
+        # Article.new(),
+        # Article.new(),
+        # Article.new(),
+        # Article.new(),
+        # Article.new(),
+        # Article.new()
         # ]
         
-        # end
+        
         
 
         def call
-            NewsForGamers::Scraper.create_article
+            puts "12"
+            Scraper.create_article
+            #binding.pry
             puts "-------------------------------------------------------------------------------".black
             puts "--Welcome to News for Gamers. Your one stop shop for the latest gaming news!!--".red
             puts "-------------------------------------------------------------------------------".black
-            NewsForGamers::Scraper.create_post
+            #NewsForGamers::Scraper.create_post
             start
         end
 
         def start
             puts "Here's the HOTTEST NEWS!!!!".red
-            puts "*Oddly placed whoosing noises*".purple
-            puts "Whoosh whoosh whoosh BAM".purple
-            news
+            puts "*Oddly placed whoosing noises*".green
+            puts "Whoosh whoosh whoosh BAM".green
+            #news
+            menu
         end
 
-        user_input = number_to_index(gets.chomp)
-        if !user_input.between?(0, menu.size-1)
-            puts "Error input not valid. Try again.".red
-        elsif
-            selection(user_input)
-            puts 
-        end
+        # user_input = number_to_index(gets.chomp)
+        # if !user_input.between?(0, menu.size-1)
+        #     puts "Error input not valid. Try again.".red
+        # elsif
+        #     selection(user_input)
+        #     puts puts "Would you like to see more facts or exit program? Enter M for menu.".red
+        #     input = gets.strip.downcase
+        #     input == "m"
+        #     start
+        # end
      end

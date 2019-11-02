@@ -2,4 +2,4 @@
 
 #require "news_for_gamers"
 require './lib/environment'
-NewsForGamers::Cli.new.call
+Cli.new.call

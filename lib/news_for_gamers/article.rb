@@ -1,16 +1,21 @@
 
-class NewsForGamers::Article
+class Article
 
         @@all = []
 
-        attr_accessor :title, :tag, :author, :description, :scraper, :attributes
+        attr_accessor :link, :title, :tag, :author, :description, :scraper, :attributes
 
         def initialize(attributes)
+        
             #trying to pull title data from the hash into an instance variable.
-          attributes[1]= @title
-          attributes[2]= @author
-          attributes[3]= @description
-          attributes[4]= @tag
+            @link = attributes[0]
+            binding.pry
+            @title = attributes[1]
+            @author = attributes[2]
+            @description  = attributes[3]
+            @tag =  attributes[4]
+          attributes.each {|key, value| self.send(("#{key}= "), value)}
+          binding.pry
         end
         
         def self.all
