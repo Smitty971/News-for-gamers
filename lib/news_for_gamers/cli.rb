@@ -1,35 +1,33 @@
 
 class Cli
     #cli class tells the scrapper to scrape, scrape articles, make articles with scraped data
-        attr_accessor :article, :scraper, :attributes
-
-        # def initialize(title, tag, author, description)
-        #     @title = title
-        #     @tag = tag
-        #     @author = author
-        #     @description = description
-        # end
+        attr_accessor :article, :scraper
 
         
-        # menu = [
-        # Article.new(),
-        # Article.new(),
-        # Article.new(),
-        # Article.new(),
-        # Article.new(),
-        # Article.new(),
-        # Article.new(),
-        # Article.new(),
-        # Article.new(),
-        # Article.new()
-        # ]
+
+        
+        menu = [
+        Article.all.each do |content|
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+        end
+                ]
+        
         
         
         
 
         def call
             puts "12"
-            #Scraper.create_article
+            Scraper.new
             puts "-------------------------------------------------------------------------------".black
             puts "--Welcome to News for Gamers. Your one stop shop for the latest gaming news!!--".red
             puts "-------------------------------------------------------------------------------".black
@@ -40,9 +38,10 @@ class Cli
             puts "Here's the HOTTEST NEWS!!!!".red
             puts "*Oddly placed whoosing noises*".green
             puts "Whoosh whoosh whoosh BAM".green
-            menu.each.with_index(1) |article, number|
+            menu.each.with_index(1) do |article, number|
             puts "#{number}. #{article}".red 
             binding.pry
+            end
         end
 
         user_input = number_to_index(gets.chomp)
@@ -89,5 +88,5 @@ class Cli
     def number_to_index(user_input)
         user_input.to_i - 1
     end
-
 end
+
