@@ -3,6 +3,10 @@
 class Scraper
     attr_accessor :link, :title, :author, :description, :tag
         @@all = []
+        
+    # def initialize 
+            
+    # end
 
     def self.create_article
         html = open('https://www.pcgamer.com/news/')
@@ -19,13 +23,14 @@ class Scraper
                     :description => pcgamer[4],
                     :tag => pcgamer[3]
                 }
-                binding.pry
+
                 attributes.each {|key, value| self.send(("#{key}= "), value)}
                 @@all << Article.new(attributes)
                 
                 
             end
     end
+
 
     def self.all
         @@all
@@ -34,17 +39,9 @@ class Scraper
     def self.reset_all
         @@all.clear
     end
-        #testing output
-             #NewsForGamers::Scrapper.create_article
+        self.create_article
+        
     
-    def self.create_post
-        html = open(self.link)
-        lnk = Nokogiri::HTML(html)
-        lnk.css("#main > article").each do |content|
-            desc = content.css("#article-body")
-            puts desc.text
-            binding.pry
-        end
-    end
+    
 end
 
