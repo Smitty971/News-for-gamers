@@ -6,20 +6,29 @@ class Cli
         
 
         
-        menu = [
-        Article.all.each do |content|
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
-           puts "#{object.title} #{object.tag} #{object.author} #{description}",
+        MENU = [
+        #Article.all.each do |content|
            puts "#{object.title} #{object.tag} #{object.author} #{description}"
-        end
-                ]
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+           puts "============================================================="
+           puts "#{object.title} #{object.tag} #{object.author} #{description}"
+            #end
+           ]
         
         
         
@@ -38,11 +47,9 @@ class Cli
             puts "Here's the HOTTEST NEWS!!!!".red
             puts "*Oddly placed whoosing noises*".green
             puts "Whoosh whoosh whoosh BAM".green
-            menu.each.with_index(1) do |article, number|
+            MENU.each.with_index(1) do |article, number|
             puts "#{number}. #{article}".red 
-            binding.pry
             end
-        end
 
         user_input = number_to_index(gets.chomp)
         if !user_input.between?(0, menu.size-1)
