@@ -18,20 +18,23 @@ class Article
 
 
         def self.create_post
-            html = open(self.link)
+            binding.pry
+            html = open(@link)
             lnk = Nokogiri::HTML(html)
             lnk.css("#main > article").each do |content|
                 desc = content.css("#article-body")
                 puts desc.text.strip
             end
+            
         end
 
         def self.all
-            @@all
+            @@all.uniq
         end
         
         def self.reset_all
             @@all.clear
         end
+        
 end 
 

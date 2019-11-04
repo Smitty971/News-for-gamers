@@ -5,35 +5,14 @@ class Cli
 
         
 
-        
-        MENU = [
-        #Article.all.each do |content|
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-           puts "============================================================="
-           puts "#{object.title} #{object.tag} #{object.author} #{description}"
-            #end
-           ]
-        
-        
-        
-        
-
+        def menu 
+        #MENU = [
+        Article.all.each.with_index do |content, number|
+           puts "#{number} #{content.title} #{content.tag} #{content.author} #{content.description}"
+           break if number > 9
+            end
+        end
+           
         def call
             puts "12"
             Scraper.new
@@ -47,18 +26,15 @@ class Cli
             puts "Here's the HOTTEST NEWS!!!!".red
             puts "*Oddly placed whoosing noises*".green
             puts "Whoosh whoosh whoosh BAM".green
-            MENU.each.with_index(1) do |article, number|
-            puts "#{number}. #{article}".red 
-            end
-
-        user_input = number_to_index(gets.chomp)
-        if !user_input.between?(0, menu.size-1)
-            puts "Error input not valid. Try again.".red
-        elsif
-            selection(user_input)
-            puts puts "Would you like to see more facts or exit program? Enter M for menu.".red
-            input = gets.strip.downcase
-            input == "m"
+            puts menu
+                user_input = number_to_index(gets.chomp)
+            if !user_input.between?(0, menu.size-1)
+                puts "Error input not valid. Try again.".red
+            elsif
+                selection(user_input)
+                puts puts "Would you like to see more facts or exit program? Enter M for menu.".red
+                input = gets.strip.downcase
+                input == "m"
             start
         end
      end
