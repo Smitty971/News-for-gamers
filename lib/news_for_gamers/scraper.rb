@@ -32,7 +32,7 @@ class Scraper
                 attributes.each {|key, value| self.send(("#{key}="), value)}
                 @@all << self
                 Article.new(attributes) 
-                break if @@all.size > 9
+                break if @@all.size > 10
             end
     end
 

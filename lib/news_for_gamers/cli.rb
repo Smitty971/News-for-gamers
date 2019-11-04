@@ -1,20 +1,18 @@
 
 class Cli
     #cli class tells the scrapper to scrape, scrape articles, make articles with scraped data
-        attr_accessor :article, :scraper
+        attr_accessor :article, :scraper, :user_input
 
-        
+        @@all = []
 
         def menu 
-        #MENU = [
         Article.all.each.with_index do |content, number|
-           puts "#{number} #{content.title} #{content.tag} #{content.author} #{content.description}"
-           break if number > 9
+           puts "#{number}. #{content.title} Tag: #{content.tag} By: #{content.author} #{content.description}"
+           break if number > 10
             end
         end
            
         def call
-            puts "12"
             Scraper.new
             puts "-------------------------------------------------------------------------------".black
             puts "--Welcome to News for Gamers. Your one stop shop for the latest gaming news!!--".red
@@ -27,17 +25,26 @@ class Cli
             puts "*Oddly placed whoosing noises*".green
             puts "Whoosh whoosh whoosh BAM".green
             puts menu
-                user_input = number_to_index(gets.chomp)
-            if !user_input.between?(0, menu.size-1)
+               self.user_input = user_input = number_to_index(gets.chomp)
+               @@all << self
+            if user_input.between?(12, 13)
                 puts "Error input not valid. Try again.".red
             elsif
                 selection(user_input)
-                puts puts "Would you like to see more facts or exit program? Enter M for menu.".red
+                puts "Would you like to see more facts or exit program? Enter M for menu. Enter 10 to exit.".red
                 input = gets.strip.downcase
                 input == "m"
             start
+            end
         end
-     end
+
+        def self.all 
+            @@all
+        end
+
+        def self.reset_all
+            @@all.clear
+        end
 
      def selection(user_input)
         case user_input
@@ -57,19 +64,21 @@ class Cli
             Article.create_post
         when 7
             Article.create_post
-        when 8 
+        when 8
             Article.create_post
         when 9
             Article.create_post
         when 10
-            puts "Goodbye"
+            Article.create_post
+        when 11
+            puts "Goodbye".red
         else 
             start
         end
     end
 
     def number_to_index(user_input)
-        user_input.to_i - 1
+        user_input.to_i 
     end
 end
 

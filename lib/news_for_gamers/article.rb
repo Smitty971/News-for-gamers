@@ -2,7 +2,7 @@ class Article
 
         @@all = []
 
-        attr_accessor :link, :title, :tag, :author, :description, :scraper, :attributes
+        attr_accessor :link, :title, :tag, :author, :description, :scraper, :attributes, :user_input
 
         def initialize(attributes)
             Scraper.all.each do |object|
@@ -18,8 +18,7 @@ class Article
 
 
         def self.create_post
-            binding.pry
-            html = open(@link)
+            html = open(Article.all["#{Cli.all[0].user_input}".to_i].link)
             lnk = Nokogiri::HTML(html)
             lnk.css("#main > article").each do |content|
                 desc = content.css("#article-body")
@@ -35,6 +34,5 @@ class Article
         def self.reset_all
             @@all.clear
         end
-        
 end 
 
