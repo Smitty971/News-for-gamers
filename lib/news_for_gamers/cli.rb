@@ -31,7 +31,7 @@ class Cli
                 puts "Error input not valid. Try again.".red
             elsif
                 selection(user_input)
-                puts "Would you like to see more facts or exit program? Enter M for menu. Enter 10 to exit.".red
+                puts "Would you like to see more articles or exit the program? Enter M for menu or enter 11 to exit when in the menu.".red
                 input = gets.strip.downcase
                 input == "m"
             start
