@@ -17,8 +17,8 @@ class Article
         
 
 
-        def self.create_post
-            html = open(Article.all["#{Cli.all[0].user_input}".to_i].link)
+        def self.create_post(user_input)
+            html = open(Article.all[user_input].link)
             lnk = Nokogiri::HTML(html)
             lnk.css("#main > article").each do |content|
                 desc = content.css("#article-body")

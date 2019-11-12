@@ -25,16 +25,20 @@ class Cli
             puts "*Oddly placed whoosing noises*".green
             puts "Whoosh whoosh whoosh BAM".green
             puts menu
-               self.user_input = user_input = number_to_index(gets.chomp)
+               user_input = gets.chomp
                @@all << self
-            if user_input.between?(12, 100)
-                puts "Error input not valid. Try again.".red
-                start
-            elsif
-                selection(user_input)
+            if user_input.to_i.between?(1, 10) || user_input == "exit"
+                if user_input == "exit"
+                    puts "Good Bye".red
+                    exit    
+                end
+                selection(user_input.to_i)
                 puts "Would you like to see more articles or exit the program? Enter M for menu or enter 11 to exit when in the menu.".red
                 input = gets.strip.downcase
                 input == "m"
+                start
+            else
+                puts "Error input not valid. Try again.".red
                 start
             end
         end
@@ -48,36 +52,7 @@ class Cli
         end
 
      def selection(user_input)
-        case user_input
-        when 1
-            Article.create_post
-        when 2
-            Article.create_post
-        when 3
-            Article.create_post
-        when 4
-            Article.create_post
-        when 5
-            Article.create_post
-        when 6
-            Article.create_post
-        when 7
-            Article.create_post
-        when 8
-            Article.create_post
-        when 9
-            Article.create_post
-        when 10
-            Article.create_post
-        when 11
-            puts "Goodbye".red
-        else 
-            start
-        end
-    end
-
-    def number_to_index(user_input)
-        user_input.to_i 
+        Article.create_post(user_input - 1)
     end
 end
 
