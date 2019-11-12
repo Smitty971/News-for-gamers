@@ -6,9 +6,9 @@ class Cli
         @@all = []
 
         def menu 
-        Article.all.each.with_index do |content, number|
+        Article.all.each.with_index(1) do |content, number|
            puts "#{number}. #{content.title} Tag: #{content.tag} By: #{content.author} #{content.description}"
-           break if number > 10
+           break if number > 9
             end
         end
            
@@ -27,14 +27,15 @@ class Cli
             puts menu
                self.user_input = user_input = number_to_index(gets.chomp)
                @@all << self
-            if user_input.between?(12, 13)
+            if user_input.between?(12, 100)
                 puts "Error input not valid. Try again.".red
+                start
             elsif
                 selection(user_input)
                 puts "Would you like to see more articles or exit the program? Enter M for menu or enter 11 to exit when in the menu.".red
                 input = gets.strip.downcase
                 input == "m"
-            start
+                start
             end
         end
 
@@ -48,8 +49,6 @@ class Cli
 
      def selection(user_input)
         case user_input
-        when 0
-            Article.create_post
         when 1
             Article.create_post
         when 2
